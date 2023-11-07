@@ -1,9 +1,3 @@
-<archetype>
-  <id>hello</id>
-  <sources>
-    <source>src/main/java/App.java</source>
-  </sources>
-  <testSources>
-    <source>src/test/java/AppTest.java</source>
-  </testSources>
-</archetype>
+version https://git-lfs.github.com/spec/v1
+oid sha256:23bd015a74e51b752a86d295cb7381eea3e93297e2f262d438634b04305f89c0
+size 192
