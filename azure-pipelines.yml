@@ -1,9 +1,4 @@
 # Starter pipeline
-- task: JFrogPublishBuildInfo@1
-  inputs:
-    artifactoryConnection: 'jfrog'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -17,6 +12,11 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'jfrog'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
