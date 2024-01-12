@@ -25,6 +25,5 @@ jobs:
    - run: |
        jf rt ping
        jf mvn-config --server-id-resolve setup-jfrog-cli-server --repo-resolve-releases test-libs-release --repo-resolve-snapshots test-libs-snapshot --server-id-deploy setup-jfrog-cli-server --repo-deploy-releases test-libs-snapshot-local --repo-deploy-snapshots test-libs-release-local
-       jf mvn clean install 
-       jf mvn clean deploy --build-name=roja/test/maven --build-number=1 -DbuildInfo.env.publisher.publishBuildInfo=true
+       find ~ -name maven.yml
        
