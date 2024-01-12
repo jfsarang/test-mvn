@@ -1,0 +1,29 @@
+---
+name: Test
+
+on: [push]
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+  
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code     
+     uses: actions/checkout@v2
+
+   # This action sets up the JFrog CLI with the Artifactory URL and access token     
+   - uses: jfrog/setup-jfrog-cli@v3 
+     env:
+    # JFrog platform url (for example: https://acme.jfrog.io) 
+      JF_URL: ${{ secrets.JF_URL }}
+      
+      # Basic authentication credentials
+      JF_USER: ${{ secrets.JF_USER }}
+      JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+
+   - run: |
+       jf rt ping
+       jf mvn clean install 
+       jf mvn clean deploy --build-name=roja/test/maven --build-number=1 -DbuildInfo.env.publisher.publishBuildInfo=true
+       
