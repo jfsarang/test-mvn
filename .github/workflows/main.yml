@@ -24,6 +24,7 @@ jobs:
 
    - run: |
        jf rt ping
+       jf mvn-config --server-id-resolve=https://sarangeplus.jfrog.io/artifactory --server-id-deploy https://sarangeplus.jfrog.io/artifactory
        jf mvn clean install 
        jf mvn clean deploy --build-name=roja/test/maven --build-number=1 -DbuildInfo.env.publisher.publishBuildInfo=true
        
