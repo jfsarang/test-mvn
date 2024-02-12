@@ -32,8 +32,11 @@ jobs:
       - name: Install JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         env:
-          JF_URL: 'https://sarangeplus.jfrog.io'
-          JFP_ACCESS_TOKEN: 'eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJMUUh2Mm5DaHdOQXNzd244UGI5ZFJkdTFCdnFMVVdDM1Uwd3d3MllqS3hBIn0.eyJzdWIiOiJqZmFjQDAxaDgxOTM1NmtlNTNnMHdkOGt4a2IxZ3AzL3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFoODE5MzU2a2U1M2cwd2Q4a3hrYjFncDMiLCJpYXQiOjE3MDAwNzM5MTEsImp0aSI6ImYxMDQ4NmM4LTViYmMtNDE2OS1hMjExLTUzNGQ3OTZmMTZjYiJ9.N1ZqBxrIuuLxL1XY4jceJVfh9jwO-BFNVWHP1w5Z-lvyUqHxsUtKsvHhzncC91CFo-nMAVnDY0T6gF4bN3DRly36KwZ_nsUAeltpDhbX8n1p29YAySPZZ2M8CI6E7Sce9brqd39eR0pqA18DFIAvWj97AXwQ2KVxNCi8JfP4Cb32SBbE28Gju14COUpXkIyuaSGfRKGC8bRXhvINUF3DnXdoCRlVV-fX3v-9vM1GZIWSihEj4rW9FDnUhR6tBCBEaI-ReXRD0fu87xhbDAGHeOzQnfwsx5Q3EUzJq8lnldxL8COMf39zh10nvVRbCsyt8V85230igkHrp1OL32LMMQ'
+          # JFrog platform url (for example: https://acme.jfrog.io)
+          JF_URL: ${{ secrets.JF_URL }}
+          # Basic authentication credentials
+          JF_USER: ${{ secrets.JF_USER }}
+          JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
         with:
           oidc-provider-name: github-oidc-integration      
 
