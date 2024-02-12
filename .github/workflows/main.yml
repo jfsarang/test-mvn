@@ -25,9 +25,24 @@ jobs:
           echo "ACCESS_TOKEN=${ACCESS_TOKEN}" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build
+        
+      - name: Checkout Project
+        uses: actions/checkout@v3 
+
+      - name: Install JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ vars.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ vars.JF_ACCESS_TOKEN }}
+        with:
+          oidc-provider-name: oidc-github-integration      
+
+      # Note: The 'ping' can succeed even if the API key is wrong/missing.
+      - name: Check JFrog CLI version and server connection.
         run: |
-          make build
+          jf --version
+          jf rt ping
+
       - name: Deploy to artifactory
         env:
           ID_TOKEN: ${{ env.ACCESS_TOKEN }}
